@@ -27,18 +27,20 @@ public class mainUser extends javax.swing.JFrame {
     /**
      * Creates new form mainUser
      */
-    List<ItemPnl> item = new ArrayList<>();
+      List<ItemPnl> item = new ArrayList<>();
+    List<BaiHat> listBH;
+    int index = -1;
     public mainUser() {
         initComponents();
 
-        jPanel6.removeAll();
+       jPanel6.removeAll();
        
-         List<BaiHat> list = new getBaiHat().getBH();
+         listBH = new getBaiHat().getBH();
          
             ItemPnl [] lay = new ItemPnl [100];
-        for (int i = 0; i < list.size() ; i++) {
+        for (int i = 0; i < listBH.size() ; i++) {
           
-           lay[i] = new ItemPnl(list.get(i),this);
+           lay[i] = new ItemPnl(listBH.get(i),this);
            item.add(lay[i]);
             jPanel6.add(lay[i]);
         }
@@ -95,6 +97,7 @@ public class mainUser extends javax.swing.JFrame {
         }
          new GetNhac().TaoNhac(bh.getTenBH());
          Phat();
+          index = listBH.indexOf(bh);
     }
 
     /**
@@ -132,10 +135,7 @@ public class mainUser extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
         jLabel59 = new javax.swing.JLabel();
         jLabel60 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
@@ -315,16 +315,20 @@ public class mainUser extends javax.swing.JFrame {
         jLabel17.setText("MiuLe ft DaLab");
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/next2.png"))); // NOI18N
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/prev.png"))); // NOI18N
-
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/repeat1.png"))); // NOI18N
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+        });
 
         jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/like.png"))); // NOI18N
-
-        jLabel27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/loa.png"))); // NOI18N
-
-        jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/random.png"))); // NOI18N
 
         jLabel59.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel59.setForeground(new java.awt.Color(255, 255, 255));
@@ -342,40 +346,36 @@ public class mainUser extends javax.swing.JFrame {
                 .addGap(83, 83, 83)
                 .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
-                .addComponent(jLabel60)
-                .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jLabel28)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel60)))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addGap(65, 65, 65)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
+                        .addComponent(jLabel14)
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel21))
+                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
                                 .addComponent(jLabel23)
-                                .addGap(238, 238, 238))
+                                .addGap(283, 283, 283))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                                .addComponent(jLabel21)
-                                .addGap(116, 116, 116)
-                                .addComponent(jLabel25)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel24)
-                                .addGap(33, 33, 33)
-                                .addComponent(jLabel26)
-                                .addGap(29, 29, 29)))
-                        .addComponent(jLabel27)
-                        .addContainerGap())
+                                .addGap(135, 135, 135))))
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 484, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel59)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel26)
+                            .addComponent(jLabel59))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel10Layout.setVerticalGroup(
@@ -387,36 +387,25 @@ public class mainUser extends javax.swing.JFrame {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel59))
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel28, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(5, 5, 5))
-                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel10Layout.createSequentialGroup()
-                                        .addGap(0, 9, Short.MAX_VALUE)
-                                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel24)
-                                            .addGroup(jPanel10Layout.createSequentialGroup()
-                                                .addGap(30, 30, 30)
-                                                .addComponent(jLabel23))
-                                            .addComponent(jLabel25)
-                                            .addComponent(jLabel26)
-                                            .addComponent(jLabel27)))
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel24)
+                                .addGroup(jPanel10Layout.createSequentialGroup()
+                                    .addGap(30, 30, 30)
+                                    .addComponent(jLabel23))
+                                .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(16, 16, 16))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(jLabel60))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel17)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -533,16 +522,41 @@ public class mainUser extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(2, 2, 2))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(1106, 762));
+        setSize(new java.awt.Dimension(1165, 762));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+        try {
+            PhatNhac(listBH.get(index + 1));
+        item.get(index).jPanel13.setBackground(new Color(0,102,102));
+        } catch (Exception e) {
+            index = 0;
+            
+        }
+    }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+        try {
+            PhatNhac(listBH.get(index - 1));
+        item.get(index).jPanel13.setBackground(new Color(0,102,102));
+        } catch (Exception e) {
+            index = listBH.size();
+            
+            
+        }
+    }//GEN-LAST:event_jLabel22MouseClicked
 
     /**
      * @param args the command line arguments
@@ -594,10 +608,7 @@ public class mainUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel49;
