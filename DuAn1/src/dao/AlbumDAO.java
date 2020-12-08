@@ -5,38 +5,56 @@
  */
 package dao;
 
+import DAO.abstractDAO;
 import java.util.List;
+import mapper.AlbumMapper;
 import model.Album;
 
 /**
  *
  * @author Administrator
  */
-public class AlbumDAO implements  GennericDAO<Album>{
+public class AlbumDAO implements GennericDAO<Album> {
 
     @Override
     public List<Album> findAll(String sql, Object... object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return abstractDAO.query(sql, new AlbumMapper(), object);
     }
 
     @Override
     public Album findOne(String sql, Object... object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            return abstractDAO.query(sql, new AlbumMapper(), object).get(0);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Override
     public void update(String sql, Object... object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            abstractDAO.update(sql, object);
+        } catch (Exception e) {
+            System.out.println("Exception in class ALbumDAO");
+        }
     }
 
     @Override
     public void delete(String sql, Object... object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            abstractDAO.update(sql, object);
+        } catch (Exception e) {
+            System.out.println("Exception in class ALbumDAO");
+        }
     }
 
     @Override
     public void insert(String sql, Object... object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            abstractDAO.update(sql, object);
+        } catch (Exception e) {
+            System.out.println("Exception in class ALbumDAO");
+        }
     }
-    
+
 }
