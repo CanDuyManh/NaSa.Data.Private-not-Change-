@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1GR5/phuongph11327/DuAn1/src/controller/SendBaiHat.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1GR5/phuongph11327/DuAn1/src/controller/sendNhac.java</file>
-            <file>file:/C:/Users/Admin/Desktop/DuAn1GR5/phuongph11327/DuAn1/src/controller/ServerMP3.java</file>
+            <file>file:/C:/Users/Admin/Desktop/gitda1.pro/NaSa.Data.Private-not-Change-/DuAn1/src/dao/NgheSiDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/gitda1.pro/NaSa.Data.Private-not-Change-/DuAn1/src/dao/AlbumDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/gitda1.pro/NaSa.Data.Private-not-Change-/DuAn1/src/view/qlAlbum.java</file>
+            <file>file:/C:/Users/Admin/Desktop/gitda1.pro/NaSa.Data.Private-not-Change-/DuAn1/src/view/mainAdmin.java</file>
+            <file>file:/C:/Users/Admin/Desktop/gitda1.pro/NaSa.Data.Private-not-Change-/DuAn1/src/view/qlbaihat.java</file>
+            <file>file:/C:/Users/Admin/Desktop/gitda1.pro/NaSa.Data.Private-not-Change-/DuAn1/src/view/qlNgheSi.java</file>
         </group>
     </open-files>
 </project-private>

@@ -31,7 +31,8 @@ public class userDAO implements dao.GennericDAO<TaiKhoan>{
            try {
                abstractDAO.update(sql,object);
            } catch (Exception e) {
-               System.out.println("Exception in class userDAO");           }
+               System.out.println("Exception in class userDAO");           
+           }
            
        }
 

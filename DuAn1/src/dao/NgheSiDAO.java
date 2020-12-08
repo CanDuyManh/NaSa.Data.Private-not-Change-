@@ -8,7 +8,7 @@ package dao;
 import java.util.List;
 import mapper.NgheSiMapper;
 import model.NgheSi;
-
+import DAO.abstractDAO;
 /**
  *
  * @author Administrator
@@ -37,21 +37,29 @@ public class NgheSiDAO implements GennericDAO<NgheSi>{
 
     @Override
     public void update(String sql, Object... object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+               DAO.abstractDAO.update(sql,object);
+           } catch (Exception e) {
+               System.out.println("Exception in class userDAO");           
+           }
     }
 
     @Override
     public void delete(String sql, Object... object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       try {
+               DAO.abstractDAO.update(sql,object);
+           } catch (Exception e) {
+               System.out.println("Exception in class userDAO");           
+           }
     }
 
     @Override
     public void insert(String sql, Object... object) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    public static void main(String[] args) {
-        System.out.println( new NgheSiDAO().findOne("select * from NGHESI where Mans = 22"));
-       
+       try {
+               DAO.abstractDAO.update(sql,object);
+           } catch (Exception e) {
+               System.out.println("Exception in class userDAO");           
+           }
     }
     
 }
