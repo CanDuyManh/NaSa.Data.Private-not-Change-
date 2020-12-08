@@ -538,9 +538,9 @@ public class qlbaihat extends javax.swing.JInternalFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         if (untility.ValidateUnility.CheckNgheSi(jTextField1.getText())) {
-            JOptionPane.showMessageDialog(null,"Bạn Có thể dùng tác giả này");
+            JOptionPane.showMessageDialog(null,"Bạn Có thể dùng ca sĩ này");
         }else{
-            JOptionPane.showMessageDialog(null,"Có cc");
+            JOptionPane.showMessageDialog(null,"không có ca sĩ này");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -548,7 +548,7 @@ public class qlbaihat extends javax.swing.JInternalFrame {
       if (untility.ValidateUnility.CheckTheLoai(jTextField2.getText())) {
             JOptionPane.showMessageDialog(null,"Bạn Có thể dùng Thể Loại Này này");
         }else{
-            JOptionPane.showMessageDialog(null,"Có cc");
+            JOptionPane.showMessageDialog(null,"không có thể loại này");
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
