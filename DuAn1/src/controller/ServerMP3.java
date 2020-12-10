@@ -56,6 +56,10 @@ public class ServerMP3 {
                  new SendBaiHat().sendbh(socket);    
             }else  if (type.equalsIgnoreCase("getNhac")) {
                  new sendNhac().GuiNhac(socket,data);    
+            }else  if (type.equalsIgnoreCase("getNgheSi")) {
+                 new SendNgheSi().sendNS(socket);    
+            }else  if (type.equalsIgnoreCase("getBaiHatNS")) {
+                 new SendBaiHat().sendbh(socket,data);   
             }
             
             //create ObjectOutputStream object

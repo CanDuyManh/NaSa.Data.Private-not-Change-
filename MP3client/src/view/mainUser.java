@@ -5,6 +5,7 @@
  */
 package view;
 
+import Cantroller.GetNgheSi;
 import Cantroller.GetNhac;
 import Cantroller.getBaiHat;
 import java.awt.BorderLayout;
@@ -14,9 +15,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JPanel;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.advanced.AdvancedPlayer;
 import model.BaiHat;
+import model.NgheSi;
 
 /**
  *
@@ -30,22 +33,23 @@ public class mainUser extends javax.swing.JFrame {
       List<ItemPnl> item = new ArrayList<>();
     List<BaiHat> listBH;
     int index = -1;
+    int i = 0;
+    List<JPanel> itemOption = new ArrayList<>();
+    
+   public void ClearItemOption(){
+       for (JPanel jPanel : itemOption) {
+           jPanel.setBackground(new Color(51,51,51));
+       }
+   }
+    
     public mainUser() {
         initComponents();
+        itemOption.add(jPanel1);
+        itemOption.add(jPanel2);
+        itemOption.add(jPanel8);
+        itemOption.add(jPanel18);
+        OptionBaiHat();
 
-       jPanel6.removeAll();
-       
-         listBH = new getBaiHat().getBH();
-         
-            ItemPnl [] lay = new ItemPnl [100];
-        for (int i = 0; i < listBH.size() ; i++) {
-          
-           lay[i] = new ItemPnl(listBH.get(i),this);
-           item.add(lay[i]);
-            jPanel6.add(lay[i]);
-        }
-        jPanel6.validate();
-        jPanel6.repaint();
     }
     Thread t ;
     
@@ -67,7 +71,7 @@ public class mainUser extends javax.swing.JFrame {
             AdvancedPlayer player = new AdvancedPlayer(bufferedInputStream);
            
                     try {
-                        player.play();
+                        player.play(i,Integer.MAX_VALUE);
                     } catch (JavaLayerException ex) {
                         
                     }
@@ -75,6 +79,7 @@ public class mainUser extends javax.swing.JFrame {
             player.close();
             System.out.println("Da ket thuc");
             bufferedInputStream.close();
+                    
         } catch (Exception e) {
             System.out.println("sai");
         }
@@ -85,8 +90,14 @@ public class mainUser extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         
+       
+        
+        
     }
     public void PhatNhac(BaiHat bh){
+        jSlider1.setMaximum(bh.getThoiLuong());
+        i = 0;
+        jSlider1.setValue(i);
         jLabel19.setText(bh.getTenBH());
         jLabel20.setText(bh.getCaSi());
         jLabel16.setText(bh.getTenBH());
@@ -157,6 +168,11 @@ public class mainUser extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(220, 80));
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
 
         jLabel1.setBackground(new java.awt.Color(0, 153, 102));
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
@@ -182,6 +198,11 @@ public class mainUser extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -300,9 +321,19 @@ public class mainUser extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(51, 51, 51));
 
         jSlider1.setBackground(new java.awt.Color(51, 51, 51));
-        jSlider1.setValue(0);
+        jSlider1.setValue(1);
+        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSlider1StateChanged(evt);
+            }
+        });
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/play1.png"))); // NOI18N
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/gaclaij.jpg"))); // NOI18N
 
@@ -558,6 +589,93 @@ public class mainUser extends javax.swing.JFrame {
             
         }
     }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
+         // TODO add your handling code here:
+         try {
+             i = jSlider1.getValue() * 35;
+             Phat();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jSlider1StateChanged
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+         // TODO add your handling code here:
+         try {
+         
+        } catch (Exception e) {
+            
+        }
+        
+    }//GEN-LAST:event_jLabel14MouseClicked
+    public void OptionBaiHat(){
+        try {
+           listBH.removeAll(listBH);
+         item.removeAll(item);  
+        } catch (Exception e) {
+        }
+       
+               jPanel6.removeAll();
+         listBH = new getBaiHat().getBH();
+            ItemPnl [] lay = new ItemPnl [100];
+        for (int i = 0; i < listBH.size() ; i++) {
+           lay[i] = new ItemPnl(listBH.get(i),this);
+           item.add(lay[i]);
+            jPanel6.add(lay[i]);
+        }
+        jPanel6.validate();
+        jPanel6.repaint();
+    }
+     public void OptionBaiHat(String TenNS){
+         try {
+           listBH.removeAll(listBH);
+         item.removeAll(item);  
+        } catch (Exception e) {
+        }
+               jPanel6.removeAll();
+         listBH = new getBaiHat().getBH(TenNS);
+            ItemPnl [] lay = new ItemPnl [100];
+        for (int i = 0; i < listBH.size() ; i++) {
+           lay[i] = new ItemPnl(listBH.get(i),this);
+           item.add(lay[i]);
+            jPanel6.add(lay[i]);
+        }
+        jPanel6.validate();
+        jPanel6.repaint();
+    }
+    public void OptionNgheSi(){
+               jPanel6.removeAll();
+        List<NgheSi> listNS = new GetNgheSi().getNS();
+            ItemAlbumPnl [] lay = new ItemAlbumPnl[100];
+        for (int i = 0; i < listNS.size() ; i++) {
+           lay[i] = new ItemAlbumPnl(listNS.get(i),this);
+          
+            jPanel6.add(lay[i]);
+        }
+        jPanel6.validate();
+        jPanel6.repaint();
+    }
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+         // TODO add your handling code here:
+         try {
+            OptionBaiHat();
+            ClearItemOption();
+            jPanel1.setBackground(new Color(0,102,102));
+        } catch (Exception e) {
+            
+        }
+    }//GEN-LAST:event_jPanel1MouseClicked
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+         // TODO add your handling code here:
+           try {
+           OptionNgheSi();
+            ClearItemOption();
+            jPanel2.setBackground(new Color(0,102,102));
+        } catch (Exception e) {
+               System.out.println("sai");
+        }
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     /**
      * @param args the command line arguments

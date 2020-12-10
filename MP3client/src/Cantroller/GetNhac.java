@@ -7,21 +7,17 @@ package Cantroller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import java.io.BufferedInputStream;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
+
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
-import java.net.URL;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.advanced.AdvancedPlayer;
+
 
 /**
  *
@@ -53,11 +49,10 @@ public class GetNhac {
             }
             file.createNewFile();
             DataOutputStream out = new DataOutputStream(new FileOutputStream(file));
-            int i = 0;
+           
             while (input.read(by) != -1) {
                 out.write(by);
-                System.out.println(i);
-                i++;
+               
             }
            
                    } catch (Exception e) {

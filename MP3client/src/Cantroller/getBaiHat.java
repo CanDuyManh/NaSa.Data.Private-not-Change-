@@ -63,6 +63,48 @@ public class getBaiHat {
                     }
        
     }
+    public List<BaiHat>getBH(String TenNS){
+         
+        
+        try {
+        toJson tJson = new toJson("getBaiHatNS",TenNS);
+        ObjectMapper mapper = new JsonMapper();
+        String json = mapper.writeValueAsString(tJson);
+        
+        Socket socket = null;
+	        ObjectOutputStream oos = null;
+	        ObjectInputStream ois = null;
+	       
+	          
+	            //establish socket connection to server
+	            socket = new Socket("localhost", 9876);
+	            //write to socket using ObjectOutputStream
+	            oos = new ObjectOutputStream(socket.getOutputStream());
+                    oos.writeObject(json);
+	            //read the server response message
+	            ois = new ObjectInputStream(socket.getInputStream());
+                  
+	           String messeger =  (String) ois.readObject();
+                   JsonNode jsonNode = mapper.readTree(messeger);
+                    String data = jsonNode.get("data").asText();
+                   List<BaiHat> participantJsonList = mapper.readValue(data, new TypeReference<List<BaiHat>>(){});
+                   for (BaiHat baiHat : participantJsonList) {
+                        System.out.println(baiHat.getCaSi());
+                        System.out.println(baiHat.getTheLoai());
+            }
+                   
+                   
+	            //close resources
+	            ois.close();
+	            oos.close();
+	            Thread.sleep(100);
+                     return participantJsonList;
+	        
+                } catch (Exception e) {
+                     return null;
+                    }
+       
+    }
     
     
     
